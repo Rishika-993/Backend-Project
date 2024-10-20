@@ -54,7 +54,7 @@ const userSchema = new Schema(
 
 //arrow function does not have this context which is necessary here so cant use it
 
-userSchema.pre("save", async function (next) {             //next necessary for middleware
+userSchema.pre("save", async function (next) {             //next keyword necessary for middleware
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 10);
     }
